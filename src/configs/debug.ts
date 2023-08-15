@@ -2,7 +2,7 @@ import Reactotron from 'reactotron-react-native';
 import { LogBox, NativeModules } from 'react-native';
 
 const reactotron = Reactotron.configure({
-  name: 'template-mobile-app',
+  name: 'Abdul_Fattah_Apptest',
 }).useReactNative();
 
 // if we're running in DEV mode, then let's connect!

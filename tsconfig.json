@@ -29,7 +29,9 @@
       "@hook/*": ["./src/hooks/*"],
       "@stores/*": ["./src/stores/*"],
       "@middleware/*": ["./src/middlewares/*"],
-      "@modules/*": ["./src/modules/*"]
+      "@modules/*": ["./src/modules/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@navigation/*": ["./src/navigation/*"]
     },
     "plugins": [
       {

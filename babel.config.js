@@ -20,6 +20,8 @@ module.exports = {
           { '@stores': './src/stores' },
           { '@middleware': './src/middlewares' },
           { '@modules': './src/modules' },
+          { '@routes': './src/routes' },
+          { '@navigation': './src/navigation' },
         ],
         extensions: [
           '.js',
