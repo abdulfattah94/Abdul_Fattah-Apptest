@@ -24,7 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import _ from 'lodash';
+import _, { size } from 'lodash';
 
 type SectionProps = PropsWithChildren<{
   title: string;
