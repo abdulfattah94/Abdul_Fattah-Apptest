@@ -10,6 +10,13 @@ module.exports = {
           { '@assets': './src/assets' },
           { '@configs': './src/configs' },
           { '@bootstrap': './src/bootstrap' },
+          { '@utils': './src/utils' },
+          { '@components-cards': './src/components/cards' },
+          { '@components-containers': './src/components/containers' },
+          { '@components-generics': './src/components/generics' },
+          { '@components-derivatives': './src/components/derivatives' },
+          { '@components-modals': './src/components/modals' },
+          { '@hook': './src/hooks' },
         ],
         extensions: [
           '.js',
