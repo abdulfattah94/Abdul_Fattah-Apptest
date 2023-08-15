@@ -17,6 +17,8 @@ module.exports = {
           { '@components-derivatives': './src/components/derivatives' },
           { '@components-modals': './src/components/modals' },
           { '@hook': './src/hooks' },
+          { '@stores': './src/stores' },
+          { '@middleware': './src/middlewares' },
         ],
         extensions: [
           '.js',
