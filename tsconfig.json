@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["./src/assets/*"],
-      "@configs/*": ["./src/configs/*"]
+      "@configs/*": ["./src/configs/*"],
+      "@bootstrap/*": ["./src/bootstrap/*"]
     },
     "plugins": [
       {
