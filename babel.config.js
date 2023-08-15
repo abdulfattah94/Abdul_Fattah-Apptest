@@ -19,6 +19,7 @@ module.exports = {
           { '@hook': './src/hooks' },
           { '@stores': './src/stores' },
           { '@middleware': './src/middlewares' },
+          { '@modules': './src/modules' },
         ],
         extensions: [
           '.js',

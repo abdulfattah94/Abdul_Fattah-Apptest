@@ -6,7 +6,7 @@ import { PERSIST } from '@configs/persist';
 
 const rootReducers = combineReducers({
   network: persistReducer(PERSIST.generalConfig, network),
-  boot: persistReducer(PERSIST.bootConfig, bootReducer),
+  app: persistReducer(PERSIST.bootConfig, bootReducer),
 });
 
 export default rootReducers;

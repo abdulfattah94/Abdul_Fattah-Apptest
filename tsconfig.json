@@ -28,7 +28,8 @@
       "@components-modals/*": ["./src/components/modals/*"],
       "@hook/*": ["./src/hooks/*"],
       "@stores/*": ["./src/stores/*"],
-      "@middleware/*": ["./src/middlewares/*"]
+      "@middleware/*": ["./src/middlewares/*"],
+      "@modules/*": ["./src/modules/*"]
     },
     "plugins": [
       {
