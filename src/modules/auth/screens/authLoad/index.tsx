@@ -1,17 +1,40 @@
 import React, { useMemo } from 'react';
-import { PadderContainer, BaseContainer } from '@components-containers/index';
-import { TextL } from '@components-derivatives/text';
+import LottieView from 'lottie-react-native';
+import { BaseContainer } from '@components-containers/index';
+import { Sizes } from '@configs/index';
+import { IProps } from '@modules/auth/types';
+import { ROUTERS } from '@routes/index';
+import { useMount } from '@utils/commons';
 
-export default function AuthLoad() {
-  const RenderMain = useMemo(() => {
+export default function AuthLoad(props: IProps) {
+  const { navigation, children } = props;
+
+  useMount(() => {
+    setTimeout(
+      () => navigation && navigation.replace(ROUTERS.ContactMain),
+      3000,
+    );
+  });
+
+  const RendRenderBackgroundContent = useMemo(() => {
     return (
-      <BaseContainer title="Auth Login">
-        <PadderContainer>
-          <TextL>Auth Load</TextL>
-        </PadderContainer>
-      </BaseContainer>
+      <LottieView
+        // eslint-disable-next-line global-require
+        source={require('./splashscreen.json')}
+        autoPlay
+        loop
+        style={{ width: Sizes.screen.width, height: Sizes.screen.height }}
+      />
     );
   }, []);
+
+  const RenderMain = useMemo(() => {
+    return (
+      <BaseContainer backgroundContent={RendRenderBackgroundContent}>
+        {children}
+      </BaseContainer>
+    );
+  }, [RendRenderBackgroundContent, children]);
 
   return RenderMain;
 }

@@ -2,9 +2,8 @@ import * as React from 'react';
 import { UIManager, Platform } from 'react-native';
 import { Screen, Navigator, ROUTERS } from '@routes/index';
 
-// start region screen
 import * as AUTHSCREENS from '@modules/auth/screens/index';
-// end region screen
+import * as CONTACTSCREENS from '@modules/contact/screens/index';
 
 if (
   Platform.OS === 'android' &&
@@ -27,9 +26,11 @@ function RootNavigator() {
       }}
       initialRouteName={ROUTERS.AuthLoad}
     >
-      {/* start region screen AUTH */}
       <Screen name={ROUTERS.AuthLoad} component={AUTHSCREENS.AuthLoad} />
-      {/* end region screen AUth */}
+      <Screen
+        name={ROUTERS.ContactMain}
+        component={CONTACTSCREENS.ContactMain}
+      />
     </Navigator>
   );
 }

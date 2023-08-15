@@ -1,20 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-/**
-    prefix penamaan pake nama module contoh => NamaModulesNamaScreen = AuthLoad
-*/
-
 enum ROUTERS {
-  // start region auth module
   AuthLoad = 'AuthLoad',
-  // end region auth module
+  ContactMain = 'ContactMain',
 }
 
 export type RootStactNavigationTypes = {
-  // start region auth type
   [ROUTERS.AuthLoad]: undefined;
-  // end region auth type
+  [ROUTERS.ContactMain]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStactNavigationTypes>();
