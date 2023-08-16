@@ -33,7 +33,11 @@ export default function InputString(props: InputStringTypes) {
   const RenderMain = useMemo(() => {
     return (
       <View style={[Styles.inputContainer, containerStyle ?? {}]}>
-        {label && <TextL style={Styles.label}>{label}</TextL>}
+        {label && (
+          <TextL textStyle="bold" style={Styles.label}>
+            {label}
+          </TextL>
+        )}
         <View style={Styles.rowCenter}>
           <TextInput
             {...props}
