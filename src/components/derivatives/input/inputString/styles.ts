@@ -41,6 +41,7 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: Colors.white005,
     flex: 1,
+    color: Colors.white,
   },
   label: {
     marginBottom: 4,
