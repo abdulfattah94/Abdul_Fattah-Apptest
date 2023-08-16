@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { View, TouchableOpacity, Platform } from 'react-native';
 import Icon from '@components-generics/icon';
-import { TextL, TextS } from '@components-derivatives/text';
+import { TextS, TextXL } from '@components-derivatives/text';
 import Styles from './styles';
 import { useTheme } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -106,7 +106,7 @@ export default function Header(props: IProps) {
         >
           {centerContentRender || (
             <View style={Styles.titleContainer}>
-              <TextL
+              <TextXL
                 color={inverse ? colors.text : colors.textGray}
                 ellipsizeMode="tail"
                 numberOfLines={2}
@@ -114,7 +114,7 @@ export default function Header(props: IProps) {
                 align="center"
               >
                 {title}
-              </TextL>
+              </TextXL>
               {subtitle && (
                 <TextS color={colors.white05} align="center">
                   {subtitle}
