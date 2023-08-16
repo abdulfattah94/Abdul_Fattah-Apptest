@@ -31,6 +31,10 @@ function RootNavigator() {
         name={ROUTERS.ContactMain}
         component={CONTACTSCREENS.ContactMain}
       />
+      <Screen
+        name={ROUTERS.ContactForm}
+        component={CONTACTSCREENS.ContactForm}
+      />
     </Navigator>
   );
 }

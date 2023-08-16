@@ -23,6 +23,7 @@ export interface ExtendedTheme extends Theme {
     baseRed: string;
     bgModal: string;
     blue08: string;
+    turquoise: string;
   };
 }
 
@@ -48,6 +49,7 @@ const MyTheme: ExtendedTheme = {
     baseRed: 'rgba(207, 0, 49, 1)',
     bgModal: '#151B38',
     blue08: 'rgba(6, 13, 44, 0.8)',
+    turquoise: 'rgba(34, 195, 145, 1)',
   },
 };
 

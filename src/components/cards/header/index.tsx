@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, TouchableOpacity, Platform } from 'react-native';
-import Icon from '@components-generics/icon';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { TextS, TextXL } from '@components-derivatives/text';
 import Styles from './styles';
 import { useTheme } from '@react-navigation/native';
@@ -48,7 +48,7 @@ export default function Header(props: IProps) {
         onPress={onLeftPress ? () => onLeftPress() : () => {}}
       >
         <Icon
-          name="ic-chevron-left"
+          name="chevron-back"
           color={inverse ? colors.text : colors.background}
           size={24}
         />

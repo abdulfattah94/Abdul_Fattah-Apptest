@@ -11,6 +11,10 @@ const Styles = StyleSheet.create({
   pb40: {
     paddingBottom: 40,
   },
+  contactListContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 100,
+  },
   contactItemContainer: {
     backgroundColor: Colors.white005,
     borderRadius: 16,
@@ -24,6 +28,20 @@ const Styles = StyleSheet.create({
     borderRadius: 60 / 2,
     backgroundColor: Colors.white02,
     marginRight: 8,
+  },
+  bottomContent: {
+    width: '100%',
+    zIndex: 1,
+    position: 'absolute',
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

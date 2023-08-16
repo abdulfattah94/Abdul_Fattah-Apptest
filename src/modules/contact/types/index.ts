@@ -10,9 +10,16 @@ export interface IProps {
 }
 
 export interface IContact {
-  id: string;
+  id?: string;
   firstName: string;
   lastName: string;
-  age: number;
+  age: any;
   photo: string;
+}
+
+export interface IErrorOptions {
+  firstName: string;
+  lastName: string;
+  photo: string;
+  age: string;
 }

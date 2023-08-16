@@ -13,6 +13,18 @@ declare module '*.jpeg' {
   export default content;
 }
 
+declare module '*.svg' {
+  import React from 'react';
+  import { SvgProps } from 'react-native-svg';
+
+  const content: React.FC<
+    SvgProps & {
+      fillSecondary?: string;
+    }
+  >;
+  export default content;
+}
+
 declare module 'react-native-onboarding-swiper';
 declare module 'react-native-offline';
 declare module 'redux-middleware-flipper';

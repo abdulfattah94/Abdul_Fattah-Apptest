@@ -4,11 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 enum ROUTERS {
   AuthLoad = 'AuthLoad',
   ContactMain = 'ContactMain',
+  ContactForm = 'ContactForm',
 }
 
 export type RootStactNavigationTypes = {
   [ROUTERS.AuthLoad]: undefined;
   [ROUTERS.ContactMain]: undefined;
+  [ROUTERS.ContactForm]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStactNavigationTypes>();

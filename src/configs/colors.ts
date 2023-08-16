@@ -10,6 +10,7 @@ export default {
   iconGray: 'rgba(52, 58, 64, 1)',
   textGray: 'rgba(52, 58, 64, 1)',
   white: 'rgb(255, 255, 255)',
+  white012: 'rgba(255, 255, 255, 0.12)',
   white02: 'rgba(255, 255, 255, 0.2)',
   white05: 'rgba(255, 255, 255, 0.5)',
   white08: 'rgba(255, 255, 255, 0.8)',
@@ -19,4 +20,7 @@ export default {
   baseRed: 'rgba(207, 0, 49, 1)',
   bgModal: '#151B38',
   blue08: 'rgba(6, 13, 44, 0.8)',
+  bloodRed: 'rgba(232, 37, 41, 1)',
+  inactiveGray: 'rgba(167, 168, 170, 1)',
+  turquoise: 'rgba(34, 195, 145, 1)',
 };

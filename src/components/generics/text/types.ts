@@ -14,9 +14,9 @@ interface TextProps {
   color?: string | undefined;
   align?: 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
   style?: StyleProp<ViewStyle> | any;
-  size?: number | undefined;
+  size?: any;
   textStyle?: 'regular' | 'medium' | 'bold' | 'black';
-  line?: number | undefined;
+  line?: any;
   fontStyle?: 'normal' | 'italic' | undefined;
   textDecorationLine?:
     | 'none'

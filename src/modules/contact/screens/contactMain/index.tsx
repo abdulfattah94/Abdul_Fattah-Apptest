@@ -1,18 +1,24 @@
 import React, { useEffect, useMemo, useCallback, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, ActivityIndicator } from 'react-native';
 import { size } from 'lodash';
-import { useTheme } from '@react-navigation/native';
+import { useTheme, useIsFocused } from '@react-navigation/native';
 import { IProps, IContact } from '@modules/contact/types';
-import { BaseContainer, PadderContainer } from '@components-containers/index';
+import { BaseContainer } from '@components-containers/index';
 import { store } from '@configs/store';
 import { useGetContactList } from '@modules/contact/hooks/index';
 import Styles from './styles';
 import { ContactCard } from '@components-cards/index';
+import LinearGradient from 'react-native-linear-gradient';
+import { ButtonFull } from '@components-derivatives/button';
+import { TextXL } from '@components-derivatives/text';
+import { Sizes } from '@configs/index';
+import { ROUTERS } from '@routes/index';
 
 export default function ContactMain(props: IProps) {
   const { navigation } = props;
 
   const { colors } = useTheme();
+  const isFocused = useIsFocused();
 
   const { isConnected } = store.getState().network;
 
@@ -35,10 +41,10 @@ export default function ContactMain(props: IProps) {
   }, [getContactListMutation]);
 
   useEffect(() => {
-    if (isConnected) {
+    if (isFocused && isConnected) {
       getContactList();
     }
-  }, [getContactList, isConnected]);
+  }, [getContactList, isConnected, isFocused]);
 
   const RenderContactItem = useCallback((item: IContact) => {
     return <ContactCard data={item} />;
@@ -52,20 +58,53 @@ export default function ContactMain(props: IProps) {
         renderItem={({ item }) => RenderContactItem(item)}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={Styles.mb16} />}
-        contentContainerStyle={Styles.pb40}
+        contentContainerStyle={Styles.contactListContainer}
       />
     );
   }, [RenderContactItem, contactList]);
 
+  const RenderBottomContent = useMemo(() => {
+    return (
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        colors={['transparent', colors.background]}
+        style={Styles.bottomContent}
+      >
+        <ButtonFull
+          backgroundColor={colors.turquoise}
+          borderColor="transparent"
+          width={Sizes.screen.width - 40}
+          onPress={() => navigation?.navigate(ROUTERS.ContactForm)}
+        >
+          <TextXL textStyle="bold">Create New</TextXL>
+        </ButtonFull>
+      </LinearGradient>
+    );
+  }, [colors.background, colors.turquoise, navigation]);
+
   const RenderMain = useMemo(() => {
     return (
       <BaseContainer title={`Contact List (${size(contactList)})`} isStatic>
-        <PadderContainer style={{ flex: 1 }}>
-          {RenderContactList}
-        </PadderContainer>
+        {isPageLoading ? (
+          <View style={Styles.emptyContainer}>
+            <ActivityIndicator color={colors.turquoise} />
+          </View>
+        ) : (
+          <View style={{ flex: 1, position: 'relative' }}>
+            {RenderContactList}
+            {RenderBottomContent}
+          </View>
+        )}
       </BaseContainer>
     );
-  }, [contactList, RenderContactList]);
+  }, [
+    contactList,
+    isPageLoading,
+    colors.turquoise,
+    RenderContactList,
+    RenderBottomContent,
+  ]);
 
   return RenderMain;
 }
