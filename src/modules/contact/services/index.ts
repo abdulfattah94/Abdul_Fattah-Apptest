@@ -1,4 +1,4 @@
-import { getData, postData, putData } from '@utils/httpClient';
+import { deleteData, getData, postData, putData } from '@utils/httpClient';
 import { IContact } from '../types';
 
 export const contactGetList = () => {
@@ -19,4 +19,9 @@ export function contactUpdate(params: IContact) {
     age,
     photo,
   });
+}
+
+export function contactDelete(params: IContact) {
+  const { id } = params;
+  return deleteData(`/contact/${id}`);
 }

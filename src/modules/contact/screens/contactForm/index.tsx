@@ -247,7 +247,7 @@ export default function ContactForm(props: IProps) {
           buttonLoading={isLoadingCreateContact || isLoadingUpdateContact}
           disabled={isLoadingCreateContact || isLoadingUpdateContact}
         >
-          <TextXL textStyle="bold">Save</TextXL>
+          <TextXL textStyle="bold">{params ? 'Update' : 'Save'}</TextXL>
         </ButtonFull>
       </LinearGradient>
     );
@@ -257,18 +257,22 @@ export default function ContactForm(props: IProps) {
     isLoadingCreateContact,
     isLoadingUpdateContact,
     onSubmit,
+    params,
   ]);
 
   const RenderMain = useMemo(() => {
     return (
-      <BaseContainer title="Create New" onBackPress={() => navigation?.pop()}>
+      <BaseContainer
+        title={params ? 'Update Contact' : 'Create New Contact'}
+        onBackPress={() => navigation?.pop()}
+      >
         <View style={Styles.container}>
           {RenderForm}
           {RenderBottomContent}
         </View>
       </BaseContainer>
     );
-  }, [RenderBottomContent, RenderForm, navigation]);
+  }, [RenderBottomContent, RenderForm, navigation, params]);
 
   return RenderMain;
 }

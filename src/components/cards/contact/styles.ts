@@ -25,14 +25,11 @@ const Styles = StyleSheet.create({
     backgroundColor: Colors.white02,
     marginRight: 8,
   },
-  contactItemContainer: {
-    // backgroundColor: Colors.white005,
-    // borderRadius: 16,
-    // padding: 16,
-    // justifyContent: 'center',
+  mr12: {
+    marginRight: 12,
   },
-  mr8: {
-    marginRight: 8,
+  actionIcon: {
+    flexDirection: 'row',
   },
 });
 
