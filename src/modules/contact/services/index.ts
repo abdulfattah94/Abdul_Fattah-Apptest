@@ -12,7 +12,11 @@ export function contactCreateNew(params: IContact) {
 }
 
 export function contactUpdate(params: IContact) {
-  return putData(`/contact/${params.id}`, {
-    ...params,
+  const { id, firstName, lastName, age, photo } = params;
+  return putData(`/contact/${id}`, {
+    firstName,
+    lastName,
+    age,
+    photo,
   });
 }

@@ -46,9 +46,19 @@ export default function ContactMain(props: IProps) {
     }
   }, [getContactList, isConnected, isFocused]);
 
-  const RenderContactItem = useCallback((item: IContact) => {
-    return <ContactCard data={item} />;
-  }, []);
+  const RenderContactItem = useCallback(
+    (item: IContact) => {
+      return (
+        <ContactCard
+          data={item}
+          onPressEdit={() =>
+            navigation?.navigate(ROUTERS.ContactForm, { data: item })
+          }
+        />
+      );
+    },
+    [navigation],
+  );
 
   const RenderContactList = useMemo(() => {
     return (

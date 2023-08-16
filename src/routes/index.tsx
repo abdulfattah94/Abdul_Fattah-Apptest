@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { IContact } from '@modules/contact/types';
 
 enum ROUTERS {
   AuthLoad = 'AuthLoad',
@@ -10,7 +11,11 @@ enum ROUTERS {
 export type RootStactNavigationTypes = {
   [ROUTERS.AuthLoad]: undefined;
   [ROUTERS.ContactMain]: undefined;
-  [ROUTERS.ContactForm]: undefined;
+  [ROUTERS.ContactForm]:
+    | undefined
+    | {
+        data: IContact;
+      };
 };
 
 const Stack = createNativeStackNavigator<RootStactNavigationTypes>();

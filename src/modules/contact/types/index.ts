@@ -7,6 +7,7 @@ type Navigation = NativeStackNavigationProp<RootStactNavigationTypes>;
 export interface IProps {
   navigation?: Navigation;
   children?: ReactNode;
+  route?: any;
 }
 
 export interface IContact {

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { debounce } from 'lodash';
 import { useTheme } from '@react-navigation/native';
@@ -11,10 +11,15 @@ import { TextXL } from '@components-derivatives/text';
 import { Sizes } from '@configs/index';
 import { InputString } from '@components-derivatives/input';
 import { isValidUrlString } from '@utils/commons';
-import { useCreateContact } from '@modules/contact/hooks/index';
+import {
+  useCreateContact,
+  useUpdateContact,
+} from '@modules/contact/hooks/index';
 
 export default function ContactForm(props: IProps) {
-  const { navigation } = props;
+  const { navigation, route } = props;
+
+  const { params } = route;
 
   const { colors } = useTheme();
 
@@ -39,6 +44,8 @@ export default function ContactForm(props: IProps) {
 
   const { mutate: createContactMutation, isLoadingCreateContact } =
     useCreateContact();
+  const { mutate: updateContactMutation, isLoadingUpdateContact } =
+    useUpdateContact();
 
   const onClearForm = useCallback(() => {
     setForm({
@@ -110,18 +117,29 @@ export default function ContactForm(props: IProps) {
         ...form,
         age: Number(form.age),
       };
+
       if (
         form?.firstName !== originData?.firstName ||
         form?.lastName !== originData?.lastName ||
         form?.age !== originData?.age ||
         form?.photo !== originData?.photo
       ) {
-        createContactMutation(sendData, {
-          onSuccess() {
-            onClearForm();
-            navigation?.pop();
-          },
-        });
+        if (!params) {
+          delete sendData.id;
+          createContactMutation(sendData, {
+            onSuccess() {
+              onClearForm();
+              navigation?.pop();
+            },
+          });
+        } else {
+          updateContactMutation(sendData, {
+            onSuccess() {
+              onClearForm();
+              navigation?.pop();
+            },
+          });
+        }
       }
     }
   }, [
@@ -131,10 +149,26 @@ export default function ContactForm(props: IProps) {
     originData?.lastName,
     originData?.age,
     originData?.photo,
+    params,
     createContactMutation,
     onClearForm,
     navigation,
+    updateContactMutation,
   ]);
+
+  useEffect(() => {
+    if (params) {
+      const { data } = params;
+      setForm({
+        ...data,
+        age: data.age.toString(),
+      });
+      setOriginData({
+        ...data,
+        age: data.age.toString(),
+      });
+    }
+  }, [params]);
 
   const RenderForm = useMemo(() => {
     return (
@@ -206,18 +240,24 @@ export default function ContactForm(props: IProps) {
         style={Styles.bottomContent}
       >
         <ButtonFull
-          backgroundColor="rgba(34, 195, 145, 1)"
+          backgroundColor={colors.turquoise}
           borderColor="transparent"
           width={Sizes.screen.width - 40}
           onPress={() => onSubmit()}
-          buttonLoading={isLoadingCreateContact}
-          disabled={isLoadingCreateContact}
+          buttonLoading={isLoadingCreateContact || isLoadingUpdateContact}
+          disabled={isLoadingCreateContact || isLoadingUpdateContact}
         >
           <TextXL textStyle="bold">Save</TextXL>
         </ButtonFull>
       </LinearGradient>
     );
-  }, [colors.background, isLoadingCreateContact, onSubmit]);
+  }, [
+    colors.background,
+    colors.turquoise,
+    isLoadingCreateContact,
+    isLoadingUpdateContact,
+    onSubmit,
+  ]);
 
   const RenderMain = useMemo(() => {
     return (
