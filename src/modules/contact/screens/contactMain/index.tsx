@@ -17,7 +17,6 @@ import { TextXL } from '@components-derivatives/text';
 import { Sizes } from '@configs/index';
 import { ROUTERS } from '@routes/index';
 import { ConfirmationModal } from '@components-modals/index';
-import reactotron from '@configs/debug';
 
 export default function ContactMain(props: IProps) {
   const { navigation } = props;
